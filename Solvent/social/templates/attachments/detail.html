@@ -1,0 +1,13 @@
+<h2>Attachment: {{ attachment.name }}</h2>
+</br>
+<h3>Details</h3>
+<label>Date Created:</label> <label>{{ attachment.date_created|date:"d/m/Y h:m:s A" }}</label> </br>
+<label>Last Modified:</label> <label>{{ attachment.last_modified|date:"d/m/Y h:m:s A" }}</label> </br>
+<label>Owner:</label> <label><a href="/social/users/{{ attachment.owner.id }}">{{ attachment.owner.name }}</a></label> </br>
+<label>Project:</label> <label><a href="/social/projects/{{ attachment.project.id }}">{{ attachment.project.name }}</a></label> </br>
+<label>File:</label> <label>'{{ attachment.data }}'</label> </br>
+
+
+</br>
+<a href="/">Home</a>
+

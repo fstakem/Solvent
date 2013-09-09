@@ -1,0 +1,27 @@
+<h2>Project: {{ project.name }}</h2>
+</br>
+<h3>Details</h3>
+<label>Date Created:</label> <label>{{ project.date_created|date:"d/m/Y h:m:s A" }}</label> </br>
+<label>Last Activity:</label> <label>{{ project.last_activity|date:"d/m/Y h:m:s A" }}</label> </br>
+
+<h3>Contributers</h3>
+<ul>
+{% for c in project.contributor.all %}
+	{% if c == project.owner %}
+		<li><a href="/social/users/{{ c.id }}">{{ c.name }} &ltOwner&gt</a></li>
+	{% else %}
+		<li><a href="/social/users/{{ c.id }}">{{ c.name }}</a></li>
+	{% endif %}
+{% endfor %}
+</ul>
+
+<h3>Attachments</h3>
+<ul>
+{% for a in project.related_attachment.all %}
+	<li><a href="/social/attachments/{{ a.id }}">{{ a.name }}</a></li>
+{% endfor %}
+</ul>
+
+</br>
+<a href="/">Home</a>
+<a href="/social/projects/">All Projects</a>

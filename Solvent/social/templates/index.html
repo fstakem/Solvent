@@ -1,0 +1,28 @@
+<h2>Root Home Page</h2>
+
+<p>This homepage is for the sharing of project code.</p>
+
+<h3>Recent Users</h3>
+{% if recent_users %}
+	<ul>
+	{% for user in recent_users %}
+		<li><a href="/social/users/{{ user.id }}">{{ user.name }}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No users found.</p>
+{% endif %}
+<a href="/social/users/">all</a>
+
+
+<h3>Recent Projects</h3>
+{% if recent_projects %}
+	<ul>
+	{% for project in recent_projects %}
+		<li><a href="/social/projects/{{ project.id }}">{{ project.name }}</a></li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No projects found.</p>
+{% endif %}
+<a href="/social/projects/">all</a>

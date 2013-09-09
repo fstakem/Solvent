@@ -1,0 +1,40 @@
+<h2>User: {{ user.name }}</h2>
+</br>
+<h3>Details</h3>
+<label>Date Joined:</label> <label>{{ user.date_joined|date:"d/m/Y h:m:s A" }}</label> </br>
+<label>Email:</label> <label>{{ user.email }}</label> </br>
+
+<label>Website:</label> 
+{% if user.website %}
+	<label>{{ user.website }}</label>
+{% else %}
+	<label>&ltNone&gt</label>
+{% endif %}
+</br>
+
+<label>Last Active:</label> <label>{{ user.last_active|date:"d/m/Y h:m:s A" }}</label> </br>
+
+<h3>Friends</h3>
+<ul>
+{% for f in user.friend.all %}
+	<li><a href="/social/users/{{ f.id }}">{{ f.name }}</a></li>
+{% endfor %}
+</ul>
+
+<h3>Projects</h3>
+<ul>
+{% for p in user.contributed_project.all %}
+	<li><a href="/social/projects/{{ p.id }}">{{ p.name }}</a></li>
+{% endfor %}
+</ul>
+
+<h3>Attachments</h3>
+<ul>
+{% for a in user.created_attachment.all %}
+	<li><a href="/social/attachments/{{ a.id }}">{{ a.name }}</a></li>
+{% endfor %}
+</ul>
+
+</br>
+<a href="/">Home</a>
+<a href="/social/users/">All Users</a>

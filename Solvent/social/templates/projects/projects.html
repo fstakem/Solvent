@@ -1,0 +1,21 @@
+<h2>Projects:Associated Users</h2>
+
+{% if all_projects %}
+	<ul>
+	{% for project in all_projects %}
+		<li><a href="/social/projects/{{ project.id }}">{{ project.name }}</a></li>
+		<ul>
+		{% for user in project.contributor.all %}
+			{% if user == project.owner %}
+				<li><a href="/social/users/{{ user.id }}">{{ user.name }} (Owner)</a></li>
+			{% else %}
+				<li><a href="/social/users/{{ user.id }}">{{ user.name }}</a></li>
+			{% endif %}
+		{% endfor %}
+		</ul>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>No projects found.</p>
+{% endif %}
+<a href="/">home</a>
